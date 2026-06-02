@@ -1,0 +1,45 @@
+import torch
+
+# Diamo un peso maggiore alla classe 0 (Normal) perché è la classe in minoranza.
+# I valori standard per questo dataset Kaggle sono circa 3 a 1.
+class_weights = torch.tensor([3.0, 1.0]).to(device)
+
+# Ora la funzione di errore "punitiva" terrà conto dello sbilanciamento
+criterion = nn.CrossEntropyLoss(weight=class_weights)
+
+# ... (il resto del codice della Cella 4 rimane uguale)
+optimizer = optim.Adam(model.parameters(), lr=0.0005) # Ho anche abbassato un po' il Learning Rate per stabilizzare
+
+# Liste per i grafici
+train_losses = []
+train_accuracies = []
+
+epochs = 7
+for epoch in range(epochs):
+    model.train()
+    running_loss = 0.0
+    correct = 0
+    total = 0
+    
+    for inputs, labels in train_loader:
+        inputs, labels = inputs.to(device), labels.to(device)
+        
+        optimizer.zero_grad()
+        outputs = model(inputs)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
+        
+        running_loss += loss.item()
+        
+        # Calcolo accuratezza
+        _, predicted = outputs.max(1)
+        total += labels.size(0)
+        correct += predicted.eq(labels).sum().item()
+    
+    epoch_loss = running_loss / len(train_loader)
+    epoch_acc = 100. * correct / total
+    train_losses.append(epoch_loss)
+    train_accuracies.append(epoch_acc)
+    
+    print(f"Epoca {epoch+1}/{epochs} - Loss: {epoch_loss:.4f} - Acc: {epoch_acc:.2f}%")

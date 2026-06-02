@@ -1,0 +1,17 @@
+# Ignora l'ambiente virtuale completo
+.venv/
+venv/
+env/
+Include/
+Lib/
+Scripts/
+share/
+pyvenv.cfg
+
+# Ignora i pacchetti e i dataset scaricati
+archive.zip
+chest_xray/
+*.zip
+
+# Ignora i file temporanei di Jupyter
+.ipynb_checkpoints/
