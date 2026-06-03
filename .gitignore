@@ -8,9 +8,8 @@ Scripts/
 share/
 pyvenv.cfg
 
-# Ignora i pacchetti e i dataset scaricati
+# Ignora i pacchetti 
 archive.zip
-chest_xray/
 *.zip
 
 # Ignora i file temporanei di Jupyter
