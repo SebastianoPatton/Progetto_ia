@@ -1,0 +1,3 @@
+- Nella cartella relazione si trova il file Relazione_IA.pdf che è la relazione del progetto
+- chest_xray contiene il dataset, ho dovuto fare delle modifiche a quella cartella sul mio pc per caricarla ma dovrebbe funzionare, se ci sono problemi basta scaricare il dataset da https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia e sostituirlo al posto di chest_xray
+- Il File main_project.ipynb è il progetto scritto su un jupyter notebook dato che ho avuto problemi ad eseguire i makefile per lo scorso progetto a causa del mio antivirus. Per eseguirlo basta premere Run in ogni blocco in ordine oppure Run All in cima al notebook
